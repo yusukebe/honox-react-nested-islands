@@ -1,13 +1,13 @@
 import { createRoute } from 'honox/factory'
-import Counter from '../islands/counter'
+import Badge from '../islands/badge'
 
 export default createRoute((c) => {
   const name = c.req.query('name') ?? 'Hono'
   return c.render(
-    <div>
-      <h1>Hello, {name}!</h1>
-      <Counter />
-    </div>,
-    { title: name }
+    <>
+      <Badge name="parent">
+        <Badge name="child" />
+      </Badge>
+    </>
   )
 })
